@@ -46,12 +46,7 @@ public class StudentEntity implements Serializable {
   private LocalDate dateOfBirth;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(
-      name = "fk_branch_id",
-      referencedColumnName = "id",
-      nullable = false,
-      insertable = false,
-      updatable = false)
+  @JoinColumn(name = "fk_branch_id", referencedColumnName = "id")
   private BranchEntity branch;
 
   public static StudentEntity fromModel(Student student) {
@@ -74,6 +69,7 @@ public class StudentEntity implements Serializable {
         .lastName(lastName)
         .dateOfAdmission(dateOfAdmission)
         .dateOfBirth(dateOfBirth)
+        .branch(branch.toModel())
         .build();
   }
 }
