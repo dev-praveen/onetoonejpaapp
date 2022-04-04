@@ -3,6 +3,7 @@ package com.praveen.associations.repository;
 import com.praveen.associations.dao.BranchDao;
 import com.praveen.associations.dao.StudentDao;
 import com.praveen.associations.entity.StudentEntity;
+import com.praveen.associations.exception.NotFoundException;
 import com.praveen.associations.model.Student;
 import com.praveen.associations.port.ObtainCollegeRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,9 @@ public class CollegeRepository implements ObtainCollegeRepository {
   public Student getStudentById(Integer id) {
 
     final var student = studentDao.findById(id);
-    return student.map(StudentEntity::toModel).orElseThrow();
+    return student
+        .map(StudentEntity::toModel)
+        .orElseThrow(() -> new NotFoundException("Couldn't find student id in the database " + id));
   }
 
   @Override
