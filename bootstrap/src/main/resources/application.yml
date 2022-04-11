@@ -8,3 +8,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: lenovo123
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
