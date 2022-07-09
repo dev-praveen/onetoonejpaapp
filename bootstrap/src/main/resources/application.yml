@@ -1,3 +1,8 @@
+server:
+  port: 8091
+  servlet:
+    context-path: /jpa-app
+
 spring:
   jpa:
     show-sql: true
@@ -6,8 +11,8 @@ spring:
       ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: lenovo123
+    username: ${USER_NAME}
+    password: ${PASSWORD}
 
 logging:
   level:
