@@ -1,0 +1,1 @@
+This is a simple demo project developed in Hexagonal Architecture (Ports and Adapters) style and can be called as Domain Driven Development (DDD) also. It has REST layer (rest-adapter) and DAO layer (jpa-adapter) and business logic goes in domain layer. The advantage of this architecture style is separation of concerns. Just plug and play.  
