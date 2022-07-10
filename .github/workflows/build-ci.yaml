@@ -22,8 +22,16 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3.0.4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn clean install --no-transfer-progress
 
       - name: Build and push
         uses: mr-smithers-excellent/docker-build-push@v5.6
