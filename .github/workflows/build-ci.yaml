@@ -25,19 +25,9 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: l7r7/sample
-          tag-custom: latest
-          tag-semver: |
-            {{raw}}
-
       - name: Build and push
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
-          tags: ${{ steps.docker_meta.outputs.tags }}
           registry: docker.io
           image: dockerpraveen123/java-app-github-actions
           username: ${{ secrets.DOCKERHUB_USERNAME }}
